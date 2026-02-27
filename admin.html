@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Add Products</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Admin Panel</h1>
+        <div>
+            <a href="index.html" class="back-btn">← Back to Store</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="admin-container">
+            <!-- Add Product Form -->
+            <div class="admin-section">
+                <h2>Add New Product</h2>
+                <p>Paste an AcBuy product URL below:</p>
+                <input type="text" id="product-url" placeholder="https://www.acbuy.com/product?id=..." class="url-input">
+                <button onclick="scrapeProduct()" class="add-product-btn">Scrape & Add Product</button>
+                <div id="scrape-status" class="status-message"></div>
+            </div>
+
+            <!-- Product Management -->
+            <div class="admin-section">
+                <h2>Existing Products</h2>
+                <div class="search-box">
+                    <input type="text" id="search-products" placeholder="Search products..." class="search-input">
+                </div>
+                <div id="products-list" class="products-list"></div>
+            </div>
+
+            <!-- Regenerate List -->
+            <div class="admin-section">
+                <h2>Maintenance</h2>
+                <button onclick="regenerateList()" class="regen-btn">Regenerate Products List</button>
+                <div id="regen-status" class="status-message"></div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        // Load products on page load
+        window.onload = loadAdminProducts;
+
+        function loadAdminProducts() {
+            fetch('products_list.json')
+                .then(response => response.json())
+                .then(files => {
+                    const container = document.getElementById('products-list');
+                    container.innerHTML = '';
+                    
+                    files.forEach(file => {
+                        const item = document.createElement('div');
+                        item.className = 'product-item';
+                        
+                        fetch('products/' + file)
+                            .then(r => r.json())
+                            .then(data => {
+                                item.innerHTML = `
+                                    <div class="product-info">
+                                        <img src="${data.cover_image}" alt="${data.title}" class="product-thumb">
+                                        <div class="product-details">
+                                            <div class="product-name">${data.title}</div>
+                                            <div class="product-price">${data.final_price} RON</div>
+                                        </div>
+                                    </div>
+                                    <button onclick="deleteProduct('${file}')" class="delete-btn">Delete</button>
+                                `;
+                            });
+                        
+                        container.appendChild(item);
+                    });
+                });
+        }
+
+        function scrapeProduct() {
+            const url = document.getElementById('product-url').value;
+            const status = document.getElementById('scrape-status');
+            
+            if (!url.includes('acbuy.com')) {
+                status.innerHTML = '<span class="error">Please enter a valid AcBuy URL</span>';
+                return;
+            }
+            
+            status.innerHTML = '<span class="loading">Scraping product... This may take 10-20 seconds</span>';
+            
+            fetch('/api/scrape', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ url: url })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    status.innerHTML = `<span class="success">✓ ${data.message}</span>`;
+                    document.getElementById('product-url').value = '';
+                    loadAdminProducts();
+                } else {
+                    status.innerHTML = `<span class="error">✗ ${data.error}</span>`;
+                }
+            })
+            .catch(error => {
+                status.innerHTML = `<span class="error">Connection error: ${error}</span>`;
+            });
+        }
+
+        function deleteProduct(filename) {
+            if (confirm('Are you sure you want to delete this product?')) {
+                fetch('/api/delete', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ file: filename })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        loadAdminProducts();
+                    } else {
+                        alert('Error deleting product');
+                    }
+                });
+            }
+        }
+
+        function regenerateList() {
+            const status = document.getElementById('regen-status');
+            status.innerHTML = '<span class="loading">Regenerating product list...</span>';
+            
+            fetch('/api/regenerate')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        status.innerHTML = `<span class="success">${data.message}</span>`;
+                        loadAdminProducts();
+                    }
+                });
+        }
+    </script>
+</body>
+</html>

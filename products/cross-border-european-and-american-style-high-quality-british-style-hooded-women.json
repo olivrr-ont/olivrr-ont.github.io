@@ -1,0 +1,65 @@
+{
+  "url": "https://www.acbuy.com/product?id=853748963763&source=AL",
+  "title": "Burberry Zip-Up (Size Up)",
+  "listed_price": 19.08,
+  "final_price": 180.72,
+  "cover_image": "https://cbu01.alicdn.com/img/ibank/O1CN01iPo3Ci1osIElkMkuL_!!2710355280-0-cib.jpg",
+  "product_images": [
+    "https://cbu01.alicdn.com/img/ibank/O1CN01bFkomZ1osIGyibzkO_!!2710355280-0-cib.jpg",
+    "https://cbu01.alicdn.com/img/ibank/O1CN01iPo3Ci1osIElkMkuL_!!2710355280-0-cib.jpg",
+    "https://cbu01.alicdn.com/img/ibank/O1CN01mLAQJ91osIElyayPc_!!2710355280-0-cib.jpg",
+    "https://cbu01.alicdn.com/img/ibank/O1CN01VcsnCI1osIGyYCEdH_!!2710355280-0-cib.jpg",
+    "https://cbu01.alicdn.com/img/ibank/O1CN01X14n8u1osIGxmwmiz_!!2710355280-0-cib.jpg"
+  ],
+  "qc_images": [
+    "https://oss.acbuy.com/temp/pda_1764210939556BA9B6AE3-D59D-4A65-A938-E56D2E391956.jpg?x-oss-process=image/resize,l_80,h_80/format,webp",
+    "https://oss.acbuy.com/temp/pda_17642109395565F9AF5AB-39D2-438C-BE15-78A0F9564F03.jpg?x-oss-process=image/resize,l_80,h_80/format,webp",
+    "https://oss.acbuy.com/temp/pda_17642127393134BAFD179-74F8-4075-AE57-764EB22EB1AF.jpg?x-oss-process=image/resize,l_80,h_80/format,webp",
+    "https://oss.acbuy.com/temp/pda_1764212739698A46C9CEE-D3B2-4329-BD6B-1ED119DDBCBE.jpg?x-oss-process=image/resize,l_80,h_80/format,webp",
+    "https://oss.acbuy.com/temp/pda_17642109395426B91785F-95F2-4D20-9EEF-4D2E257AFD97.jpg?x-oss-process=image/resize,l_80,h_80/format,webp",
+    "https://oss.acbuy.com/temp/pda_1764210939559DB56DD35-118B-4DDA-BC00-5D41DDD09F59.jpg?x-oss-process=image/resize,l_80,h_80/format,webp",
+    "https://oss.acbuy.com/temp/pda_176421273931527A69C16-8D88-4AC4-AFCA-674628ABAB99.jpg?x-oss-process=image/resize,l_80,h_80/format,webp",
+    "https://oss.acbuy.com/temp/pda_1764212739733F5C5E3B1-5D9B-45FB-9BC4-CF7247ABE6A0.jpg?x-oss-process=image/resize,l_80,h_80/format,webp",
+    "https://oss.acbuy.com/temp/pda_176420708663095289A60-43E5-4F03-9396-9209D6F2E413.jpg?x-oss-process=image/resize,l_80,h_80/format,webp",
+    "https://oss.acbuy.com/temp/pda_1764207086600B040662A-9BEC-49E2-9C59-2EE06C3617DE.jpg?x-oss-process=image/resize,l_80,h_80/format,webp"
+  ],
+  "sizes": [
+    "S",
+    "M",
+    "L",
+    "XL",
+    "XXL"
+  ],
+  "colors": [
+    {
+      "name": "Black",
+      "images": [
+        "https://cbu01.alicdn.com/img/ibank/O1CN01bFkomZ1osIGyibzkO_!!2710355280-0-cib.jpg"
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "listed_price": 19.08,
+      "final_price": 180.72
+    },
+    {
+      "name": "silver gray",
+      "images": [
+        "https://cbu01.alicdn.com/img/ibank/O1CN01VcsnCI1osIGyYCEdH_!!2710355280-0-cib.jpg"
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "listed_price": 19.08,
+      "final_price": 180.72
+    }
+  ]
+}

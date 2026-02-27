@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="cart-bubble" onclick="openCart()">0</div>
+
+<div id="cart-overlay" onclick="closeCart()">
+    <div id="cart-box" onclick="event.stopPropagation();"></div>
+</div>
+
+<header>
+    <a href="index.html" class="back-btn">← Back</a>
+    <div>
+        <a href="admin.html" class="admin-link">Admin</a>
+        <div id="cart-bubble" onclick="openCart()">0</div>
+    </div>
+</header>
+
+<main>
+    <div id="product-container"></div>
+    
+    <!-- Reviews Summary Section -->
+    <div id="reviews-summary"></div>
+    
+    <!-- Write Review Button -->
+    <a id="write-review-btn" class="add-cart-btn" style="margin-top: 20px; display: block; text-align: center; text-decoration: none;">
+        Write a Review
+    </a>
+    
+    <!-- Product Gallery Section (will be populated by script if images exist) -->
+    <div id="product-gallery-container" style="margin-top: 40px;"></div>
+    
+    <!-- QC Images Section (will be populated by script if QC images exist) -->
+    <div id="qc-container" style="margin-top: 40px;"></div>
+</main>
+
+<script src="script.js"></script>
+<script src="reviews.js"></script>
+<script>
+    // Load product page
+    loadProductPage();
+    
+    // Load reviews summary after product page loads
+    setTimeout(() => {
+        const params = new URLSearchParams(location.search);
+        const file = params.get("id");
+        if (file) {
+            // Load reviews summary
+            loadReviewsSummary(file, document.getElementById('reviews-summary'));
+            
+            // Set write review button link
+            const writeReviewBtn = document.getElementById('write-review-btn');
+            if (writeReviewBtn) {
+                writeReviewBtn.href = `reviews.html?product=${file}`;
+            }
+        }
+    }, 500);
+</script>
+
+</body>
+</html>

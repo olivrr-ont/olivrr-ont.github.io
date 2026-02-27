@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Write a Review</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="reviews.css">
+</head>
+<body>
+    <div id="cart-bubble" onclick="openCart()">0</div>
+
+    <div id="cart-overlay" onclick="closeCart()">
+        <div id="cart-box" onclick="event.stopPropagation();"></div>
+    </div>
+
+    <header>
+        <a href="javascript:history.back()" class="back-btn">← Back</a>
+        <h1>Write a Review</h1>
+    </header>
+
+    <main>
+        <div id="review-container" class="review-container">
+            <!-- Product info will be loaded here -->
+        </div>
+        
+        <div id="review-form-container" class="review-form-container">
+            <!-- Review form will be loaded here -->
+        </div>
+        
+        <div id="existing-reviews" class="existing-reviews">
+            <!-- Existing reviews will be loaded here -->
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script src="reviews.js"></script>
+    <script>
+        loadReviewPage();
+    </script>
+</body>
+</html>

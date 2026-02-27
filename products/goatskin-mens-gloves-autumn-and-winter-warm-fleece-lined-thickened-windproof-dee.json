@@ -1,0 +1,79 @@
+{
+  "url": "https://www.acbuy.com/product?id=857228749532&source=AL",
+  "title": "Unbranded Genuine Leather Gloves",
+  "listed_price": 6.01,
+  "final_price": 70.1,
+  "cover_image": "https://cbu01.alicdn.com/img/ibank/O1CN019pjcuh1F9OrosYEqw_!!1675170444-0-cib.jpg",
+  "product_images": [
+    "https://cbu01.alicdn.com/img/ibank/O1CN019pjcuh1F9OrosYEqw_!!1675170444-0-cib.jpg",
+    "https://cbu01.alicdn.com/img/ibank/O1CN01ohvJak1F9OroD6KMn_!!1675170444-0-cib.jpg",
+    "https://cbu01.alicdn.com/img/ibank/O1CN010qE2Fb1F9OroAFdMt_!!1675170444-0-cib.jpg",
+    "https://cbu01.alicdn.com/img/ibank/O1CN01q8xPb21F9OrnGV8Qd_!!1675170444-0-cib.jpg",
+    "https://cbu01.alicdn.com/img/ibank/O1CN01XdrAna1F9OrnGVo2F_!!1675170444-0-cib.jpg",
+    "https://cbu01.alicdn.com/img/ibank/O1CN01JvM9ME1F9OrosZFAE_!!1675170444-0-cib.jpg"
+  ],
+  "qc_images": [
+    "https://oss.acbuy.com/temp/pda_1760073605272987D6AF5-5E19-4169-B308-0C879E4603F3.jpg?x-oss-process=image/resize,l_80,h_80/format,webp",
+    "https://oss.acbuy.com/temp/pda_1760073605276EB70E8D7-C181-488F-83A2-961837CAB2D2.jpg?x-oss-process=image/resize,l_80,h_80/format,webp",
+    "https://oss.acbuy.com/temp/pda_176007360527439A74133-C119-4876-B25A-9690DF7EE949.jpg?x-oss-process=image/resize,l_80,h_80/format,webp"
+  ],
+  "sizes": [
+    "11",
+    "12",
+    "13"
+  ],
+  "colors": [
+    {
+      "name": "Style 1 black light plate buttons",
+      "images": [
+        "https://cbu01.alicdn.com/img/ibank/O1CN010qE2Fb1F9OroAFdMt_!!1675170444-0-cib.jpg"
+      ],
+      "sizes": [
+        "11",
+        "12",
+        "13"
+      ],
+      "listed_price": 6.01,
+      "final_price": 70.1
+    },
+    {
+      "name": "Style 2 black knife flower",
+      "images": [
+        "https://cbu01.alicdn.com/img/ibank/O1CN01XdrAna1F9OrnGVo2F_!!1675170444-0-cib.jpg"
+      ],
+      "sizes": [
+        "11",
+        "12",
+        "13"
+      ],
+      "listed_price": 6.01,
+      "final_price": 70.1
+    },
+    {
+      "name": "Style 3 black belt buckle",
+      "images": [
+        "https://cbu01.alicdn.com/img/ibank/O1CN019pjcuh1F9OrosYEqw_!!1675170444-0-cib.jpg"
+      ],
+      "sizes": [
+        "11",
+        "12",
+        "13"
+      ],
+      "listed_price": 6.01,
+      "final_price": 70.1
+    },
+    {
+      "name": "Style 4 black light plate elastic",
+      "images": [
+        "https://cbu01.alicdn.com/img/ibank/O1CN01JvM9ME1F9OrosZFAE_!!1675170444-0-cib.jpg"
+      ],
+      "sizes": [
+        "11",
+        "12",
+        "13"
+      ],
+      "listed_price": 6.01,
+      "final_price": 70.1
+    }
+  ]
+}

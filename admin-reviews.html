@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Management</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="reviews.css">
+</head>
+<body>
+    <header>
+        <a href="admin.html" class="back-btn">← Back to Admin</a>
+        <h1>Review Management</h1>
+    </header>
+
+    <main>
+        <div class="admin-container">
+            <div class="admin-section">
+                <h2>All Reviews</h2>
+                <div id="all-reviews-container"></div>
+            </div>
+        </div>
+    </main>
+
+    <script src="reviews.js"></script>
+    <script>
+        loadAllReviews();
+        
+        async function loadAllReviews() {
+            const container = document.getElementById('all-reviews-container');
+            const reviews = JSON.parse(localStorage.getItem('productReviews') || '{}');
+            
+            if (Object.keys(reviews).length === 0) {
+                container.innerHTML = '<p>No reviews yet.</p>';
+                return;
+            }
+            
+            let html = '';
+            
+            for (const [productId, productReviews] of Object.entries(reviews)) {
+                // Load product info
+                const product = await fetch(`products/${productId}`)
+                    .then(r => r.json())
+                    .catch(() => null);
+                
+                html += `
+                    <div class="product-reviews-section">
+                        <h3>${product ? product.title : productId}</h3>
+                        <p>${productReviews.length} review${productReviews.length !== 1 ? 's' : ''}</p>
+                        ${productReviews.map(review => `
+                            <div class="review-item">
+                                <div class="review-header">
+                                    <div class="reviewer-info">
+                                        <div class="reviewer-name">${review.firstName} ${review.lastName.charAt(0)}.</div>
+                                        <div class="review-date">${new Date(review.date).toLocaleDateString()}</div>
+                                    </div>
+                                    <div class="review-rating">${'★'.repeat(review.rating)}</div>
+                                </div>
+                                <div class="review-text">${review.reviewText}</div>
+                                <div class="review-actions">
+                                    <button onclick="deleteReview('${review.id}', '${productId}')">Delete</button>
+                                    <button onclick="toggleVerify('${review.id}', '${productId}')">
+                                        ${review.verified ? 'Unverify' : 'Verify'}
+                                    </button>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            }
+            
+            container.innerHTML = html;
+        }
+        
+        function deleteReview(reviewId, productId) {
+            if (confirm('Delete this review?')) {
+                const reviews = JSON.parse(localStorage.getItem(`reviews_${productId}`) || '[]');
+                const updatedReviews = reviews.filter(r => r.id !== reviewId);
+                localStorage.setItem(`reviews_${productId}`, JSON.stringify(updatedReviews));
+                
+                // Also update main reviews object
+                const allReviews = JSON.parse(localStorage.getItem('productReviews') || '{}');
+                if (allReviews[productId]) {
+                    allReviews[productId] = allReviews[productId].filter(r => r.id !== reviewId);
+                    localStorage.setItem('productReviews', JSON.stringify(allReviews));
+                }
+                
+                loadAllReviews();
+            }
+        }
+        
+        function toggleVerify(reviewId, productId) {
+            const reviews = JSON.parse(localStorage.getItem(`reviews_${productId}`) || '[]');
+            const reviewIndex = reviews.findIndex(r => r.id === reviewId);
+            
+            if (reviewIndex !== -1) {
+                reviews[reviewIndex].verified = !reviews[reviewIndex].verified;
+                localStorage.setItem(`reviews_${productId}`, JSON.stringify(reviews));
+                
+                // Also update main reviews object
+                const allReviews = JSON.parse(localStorage.getItem('productReviews') || '{}');
+                if (allReviews[productId]) {
+                    const mainReviewIndex = allReviews[productId].findIndex(r => r.id === reviewId);
+                    if (mainReviewIndex !== -1) {
+                        allReviews[productId][mainReviewIndex].verified = reviews[reviewIndex].verified;
+                        localStorage.setItem('productReviews', JSON.stringify(allReviews));
+                    }
+                }
+                
+                loadAllReviews();
+            }
+        }
+    </script>
+</body>
+</html>
